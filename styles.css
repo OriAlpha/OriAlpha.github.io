@@ -260,13 +260,16 @@ a { color: inherit; text-decoration: none; }
 }
 .path__stage--live text { fill: var(--cyan); font-variation-settings: "wdth" 95, "wght" 600; }
 
-.path__sub {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 8.5px; letter-spacing: .08em;
+.path__stage text.path__sub {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 8.5px;
+  letter-spacing: .08em;
+  font-variation-settings: normal;   /* drop the parent's weight/width axes */
+  font-weight: 400;
   fill: var(--faint);
 }
-.path__stage--mine .path__sub { fill: color-mix(in srgb, var(--amber) 72%, #fff); }
-.path__stage--tune .path__sub { fill: #9E8FE0; }
+.path__stage--mine text.path__sub { fill: color-mix(in srgb, var(--amber) 74%, #fff); }
+.path__stage--tune text.path__sub { fill: #A899E8; }
 
 .path__tip { fill: var(--edge); }
 
