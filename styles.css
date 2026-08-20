@@ -568,98 +568,9 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 0 18px -4px var(--cyan);
 }
 
-/* ─────────────  contact form  ───────────── */
-
-.cform {
-  grid-column: 1 / -1; grid-row: 3;
-  margin-top: 1.9rem; padding-top: 1.6rem;
-  border-top: 1px solid var(--grid);
-}
-
-.cform__grid {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem 1.1rem;
-}
-
-.cform__field { margin-bottom: 1rem; }
-.cform__grid .cform__field { margin-bottom: 0; }
-
-.cform__field label {
-  display: block; margin-bottom: .4rem;
-  font-family: "JetBrains Mono", monospace;
-  font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--faint);
-}
-
-.cform input,
-.cform textarea {
-  width: 100%;
-  padding: .6rem .7rem;
-  background: var(--void);
-  border: 1px solid var(--edge);
-  border-radius: 2px;
-  color: var(--text);
-  font-family: Saira, sans-serif;
-  font-size: .93rem; line-height: 1.5;
-  transition: border-color .16s, box-shadow .16s;
-}
-
-.cform textarea { resize: vertical; min-height: 5.5rem; }
-
-.cform input:focus,
-.cform textarea:focus {
-  outline: none;
-  border-color: var(--cyan);
-  box-shadow: 0 0 0 1px var(--cyan), 0 0 14px -6px var(--cyan);
-}
-
-.cform input::placeholder,
-.cform textarea::placeholder { color: var(--faint); }
-
-/* spam trap stays out of sight and out of the tab order */
-.cform input[name="_gotcha"] {
-  position: absolute; left: -9999px;
-  width: 1px; height: 1px; opacity: 0;
-}
-
-.cform__foot {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem; flex-wrap: wrap;
-  margin-top: 1.15rem;
-}
-
-.cform__status {
-  font-family: "JetBrains Mono", monospace;
-  font-size: .68rem; letter-spacing: .06em;
-  color: var(--faint); min-height: 1.2em;
-}
-.cform__status[data-state="ok"]   { color: var(--cyan); }
-.cform__status[data-state="err"]  { color: var(--amber); }
-
-.cform__send {
-  padding: .62rem 1.35rem;
-  background: transparent;
-  border: 1px solid var(--cyan); color: var(--cyan);
-  border-radius: 2px; cursor: pointer;
-  font-family: "JetBrains Mono", monospace;
-  font-size: .74rem; letter-spacing: .08em; text-transform: uppercase;
-  transition: background .16s, color .16s, box-shadow .16s, opacity .16s;
-}
-.cform__send:hover:not(:disabled) {
-  background: var(--cyan); color: var(--void);
-  box-shadow: 0 0 18px -4px var(--cyan);
-}
-.cform__send:disabled { opacity: .45; cursor: not-allowed; }
-
-@media (max-width: 560px) {
-  .cform__grid { grid-template-columns: 1fr; }
-  .cform__grid .cform__field:first-child { margin-bottom: 1rem; }
-}
-
 @media (max-width: 760px) {
   .contact { grid-template-columns: 1fr; }
   .links { grid-column: 1; grid-row: auto; margin-top: 1.6rem; justify-content: flex-start; }
-  .cform { grid-column: 1; grid-row: auto; }
 }
 
 /* ─────────────  footer  ───────────── */
