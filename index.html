@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=9">
+<link rel="stylesheet" href="styles.css?v=10">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23070B14'/><rect x='6' y='16' width='4' height='10' fill='%232EE6D6'/><rect x='12' y='11' width='4' height='15' fill='%237B5CFF'/><rect x='18' y='14' width='4' height='12' fill='%23FF3D8B'/><rect x='24' y='6' width='4' height='20' fill='%23FFB020'/></svg>">
 </head>
 <body>
@@ -95,34 +95,54 @@
         </div>
         <div class="panel__body">
 
-          <svg class="path" viewBox="0 0 340 348" role="img"
-               aria-label="Diagram of the training stack: model and data feed into PyTorch and HuggingFace, then through the layer I work on — LoRA, LoReFT and PEFT adapters, Autotrainer, and Slurm with DDP and FSDP — and finally onto the GPUs.">
+          <svg class="path" viewBox="0 0 340 336" role="img"
+               aria-label="Two training tracks that meet on the same cluster. Left: PyTorch and TensorFlow through Autotrainer. Right: HuggingFace through LoRA, LoReFT and PEFT adapters. Both converge on Slurm with DDP and FSDP, and run on the GPUs.">
 
-            <!-- spine -->
-            <line class="path__spine" x1="170" y1="40" x2="170" y2="274"/>
+            <!-- trunk down from the source, then the split -->
+            <line class="path__spine" x1="170" y1="42"  x2="170" y2="54"/>
+            <line class="path__spine" x1="89"  y1="54"  x2="251" y2="54"/>
+            <line class="path__spine" x1="89"  y1="54"  x2="89"  y2="66"/>
+            <line class="path__spine" x1="251" y1="54"  x2="251" y2="66"/>
+
+            <!-- each track continues down into the working layer -->
+            <line class="path__spine" x1="89"  y1="96"  x2="89"  y2="122"/>
+            <line class="path__spine" x1="251" y1="96"  x2="251" y2="122"/>
+
+            <!-- the two tracks meet again -->
+            <line class="path__spine" x1="89"  y1="172" x2="89"  y2="186"/>
+            <line class="path__spine" x1="251" y1="172" x2="251" y2="186"/>
+            <line class="path__spine" x1="89"  y1="186" x2="251" y2="186"/>
+            <line class="path__spine" x1="170" y1="186" x2="170" y2="198"/>
+
+            <line class="path__spine" x1="170" y1="238" x2="170" y2="262"/>
 
             <!-- the layer I work on -->
-            <rect class="path__zone" x="14" y="104" width="312" height="140" rx="4"/>
-            <text class="path__zonelbl" x="318" y="98" text-anchor="end">the layer I work on</text>
+            <rect class="path__zone" x="10" y="112" width="320" height="126" rx="4"/>
+            <text class="path__zonelbl" x="330" y="106" text-anchor="end">the layer I work on</text>
 
             <g class="path__stage">
-              <rect x="70" y="12" width="200" height="30" rx="3"/>
+              <rect x="90" y="12" width="160" height="30" rx="3"/>
               <text x="170" y="31" text-anchor="middle">Model &middot; Data</text>
             </g>
 
             <g class="path__stage">
-              <rect x="52" y="58" width="236" height="30" rx="3"/>
-              <text x="170" y="77" text-anchor="middle">PyTorch &middot; HuggingFace</text>
+              <rect x="18" y="66" width="142" height="30" rx="3"/>
+              <text x="89" y="85" text-anchor="middle">PyTorch &middot; TF</text>
             </g>
-
-            <g class="path__stage path__stage--tune">
-              <rect x="52" y="114" width="236" height="34" rx="3"/>
-              <text x="170" y="135" text-anchor="middle">LoRA &middot; LoReFT &middot; PEFT</text>
+            <g class="path__stage">
+              <rect x="180" y="66" width="142" height="30" rx="3"/>
+              <text x="251" y="85" text-anchor="middle">HuggingFace</text>
             </g>
 
             <g class="path__stage path__stage--mine">
-              <rect x="52" y="156" width="236" height="34" rx="3"/>
-              <text x="170" y="177" text-anchor="middle">Autotrainer</text>
+              <rect x="18" y="122" width="142" height="50" rx="3"/>
+              <text x="89" y="143" text-anchor="middle">Autotrainer</text>
+              <text class="path__sub" x="89" y="159" text-anchor="middle">distributed training</text>
+            </g>
+            <g class="path__stage path__stage--tune">
+              <rect x="180" y="122" width="142" height="50" rx="3"/>
+              <text x="251" y="143" text-anchor="middle">LoRA &middot; LoReFT</text>
+              <text class="path__sub" x="251" y="159" text-anchor="middle">PEFT &middot; 4-bit</text>
             </g>
 
             <g class="path__stage path__stage--live">
@@ -130,24 +150,21 @@
               <text x="170" y="219" text-anchor="middle">Slurm &middot; DDP &middot; FSDP</text>
             </g>
 
-            <!-- arrowheads -->
-            <path class="path__tip" d="M170 52 l-4 -7 h8 z"/>
-            <path class="path__tip" d="M170 108 l-4 -7 h8 z"/>
+            <path class="path__tip" d="M89 122 l-4 -7 h8 z"/>
+            <path class="path__tip" d="M251 122 l-4 -7 h8 z"/>
+            <path class="path__tip" d="M170 198 l-4 -7 h8 z"/>
             <path class="path__tip" d="M170 268 l-4 -7 h8 z"/>
 
-            <!-- metal -->
             <g class="path__metal">
-              <rect x="52"  y="280" width="26" height="26" rx="2"/>
-              <rect x="86"  y="280" width="26" height="26" rx="2"/>
-              <rect x="120" y="280" width="26" height="26" rx="2"/>
-              <rect x="154" y="280" width="26" height="26" rx="2"/>
-              <rect x="188" y="280" width="26" height="26" rx="2"/>
-              <rect x="222" y="280" width="26" height="26" rx="2"/>
-              <rect x="256" y="280" width="26" height="26" rx="2"/>
+              <rect x="52"  y="272" width="26" height="26" rx="2"/>
+              <rect x="86"  y="272" width="26" height="26" rx="2"/>
+              <rect x="120" y="272" width="26" height="26" rx="2"/>
+              <rect x="154" y="272" width="26" height="26" rx="2"/>
+              <rect x="188" y="272" width="26" height="26" rx="2"/>
+              <rect x="222" y="272" width="26" height="26" rx="2"/>
+              <rect x="256" y="272" width="26" height="26" rx="2"/>
             </g>
-            <text class="path__foot" x="170" y="330" text-anchor="middle">GPU &middot; NODE &middot; METAL</text>
-
-            <circle class="path__packet" cx="170" cy="0" r="3.5"/>
+            <text class="path__foot" x="170" y="320" text-anchor="middle">GPU &middot; NODE &middot; METAL</text>
           </svg>
 
         </div>
@@ -296,6 +313,6 @@
   <span>Suhas Goravale Siddaramu &middot; Reutlingen, Germany</span>
 </footer>
 
-<script src="main.js?v=9"></script>
+<script src="main.js?v=10"></script>
 </body>
 </html>
