@@ -55,9 +55,13 @@ featured projects the 96-block grid overflows — raise `TOTAL` or lower
 ## Design notes
 
 The page is an instrument console, because scheduling work onto hardware is
-what I spend my days on. Panels are the sections, the node map is the cluster,
-and the queue is the job list — hovering either one highlights the other. Job
-history is `sacct`, the queue is `squeue`.
+what I spend my days on. Panels are the sections, the job history is `sacct`
+and the queue is `squeue`.
+
+The signal path panel is the headline claim drawn out: it shows the stack from
+model down to metal, with the two layers I actually work on picked out of it.
+Roles carry the same hierarchy — the three positions I want read sit at full
+weight, and the student role is listed and dated but deliberately quiet.
 
 Colour follows a cockpit convention: cyan is nominal, amber is active. The
 ramp runs cyan → violet → magenta → amber and encodes recency wherever it

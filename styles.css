@@ -211,31 +211,70 @@ a { color: inherit; text-decoration: none; }
   .readout { grid-template-columns: 1fr; }
 }
 
-/* ─────────────  node map  ───────────── */
+/* ─────────────  signal path  ───────────── */
 
-.rack { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; }
+.path { width: 100%; height: auto; display: block; }
 
-.cell {
-  aspect-ratio: 1; border-radius: 1px;
-  background: var(--grid);
-  opacity: 0; transform: scale(.5);
-  transition: filter .16s, box-shadow .16s;
-  animation: cellOn .34s var(--ease) forwards;
-}
-@keyframes cellOn { to { opacity: 1; transform: scale(1); } }
+.path__spine { stroke: var(--edge); stroke-width: 1.5; }
 
-.cell--job { cursor: pointer; }
-
-.rack.is-focused .cell--job { filter: saturate(.12) brightness(.5); }
-.rack.is-focused .cell--job.is-lit {
-  filter: none;
-  box-shadow: 0 0 0 1px var(--text), 0 0 12px currentColor;
+.path__zone {
+  fill: color-mix(in srgb, var(--cyan) 5%, transparent);
+  stroke: var(--cyan); stroke-width: 1;
+  stroke-dasharray: 3 3; opacity: .55;
 }
 
-.rack__hint {
-  margin-top: .85rem; min-height: 2.2em;
+.path__zonelbl {
+  fill: var(--cyan);
   font-family: "JetBrains Mono", monospace;
-  font-size: .68rem; color: var(--faint); line-height: 1.5;
+  font-size: 9px; letter-spacing: .14em; text-transform: uppercase;
+}
+
+.path__stage rect { fill: var(--raised); stroke: var(--edge); stroke-width: 1; }
+.path__stage text {
+  fill: var(--dim);
+  font-family: Saira, sans-serif;
+  font-variation-settings: "wdth" 95, "wght" 500;
+  font-size: 14px;
+}
+
+.path__stage--mine rect {
+  fill: color-mix(in srgb, var(--amber) 14%, var(--raised));
+  stroke: var(--amber);
+}
+.path__stage--mine text { fill: var(--amber); font-variation-settings: "wdth" 95, "wght" 700; }
+
+.path__stage--live rect {
+  fill: color-mix(in srgb, var(--cyan) 12%, var(--raised));
+  stroke: var(--cyan);
+}
+.path__stage--live text { fill: var(--cyan); font-variation-settings: "wdth" 95, "wght" 600; }
+
+.path__tip { fill: var(--edge); }
+
+.path__metal rect { fill: var(--grid); stroke: var(--edge); stroke-width: 1; }
+.path__metal rect:nth-child(2n) { fill: var(--raised); }
+
+.path__foot {
+  fill: var(--faint);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px; letter-spacing: .16em;
+}
+
+.path__packet {
+  fill: var(--cyan);
+  filter: drop-shadow(0 0 5px var(--cyan));
+  animation: packet 3.6s cubic-bezier(.55,.05,.45,.95) infinite;
+}
+
+@keyframes packet {
+  0%        { transform: translateY(34px);  opacity: 0; }
+  8%        { opacity: 1; }
+  88%       { opacity: 1; }
+  100%      { transform: translateY(250px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .path__packet { display: none; }
 }
 
 /* ─────────────  counters  ───────────── */
@@ -326,6 +365,18 @@ a { color: inherit; text-decoration: none; }
   content: ""; position: absolute; left: 0; top: .62em;
   width: 6px; height: 1px; background: var(--faint);
 }
+
+/* student entry: present and dated, but never competing */
+.role--minor { padding: .95rem 0; opacity: .72; }
+.role--minor .role__title {
+  font-size: .95rem;
+  font-variation-settings: "wdth" 92, "wght" 500;
+  color: var(--dim);
+}
+.role--minor .role__org { font-size: .82rem; color: var(--faint); }
+.role--minor .role__track { height: 3px; margin: .75rem 0 .2rem; }
+.role--minor .role__span { box-shadow: none; }
+.role--minor:hover { opacity: 1; }
 
 @media (max-width: 700px) {
   .role__head { grid-template-columns: auto minmax(0, 1fr); }

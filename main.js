@@ -2,12 +2,12 @@
    Suhas Goravale Siddaramu — ML infrastructure
 
    ROLES and PROJECTS drive every panel on the page. Edit them
-   and the timeline, the queue, the archive, the counters and
-   the node map all rebuild.
+   and the timeline, the queue, the archive and the counters
+   all rebuild.
 
-   Every readout on the page is derived from this data — the
-   counters, the elapsed times and the job states are computed,
-   never hard-coded, and the real date sits next to each one.
+   Every readout is derived from this data — the counters, the
+   elapsed times and the job states are computed, never typed
+   in, and the real date sits next to each one.
    =========================================================== */
 
 const ROLES = [
@@ -50,15 +50,14 @@ const ROLES = [
     ]
   },
   {
+    // student role: listed for completeness, deliberately not featured
+    minor: true,
     title: 'Working Student, Data Science & AI',
     org: 'Aptiv Services Germany GmbH',
     where: 'Wuppertal',
     from: '2019-04',
     to: '2020-12',
-    notes: [
-      'Extracted features from vehicle RADAR data and optimized TensorFlow models for embedded ARM using graph transformations and Ambarella’s CV22 SDK.',
-      'Improved model performance 2–4× through pruning and quantization, with TensorFlow profiling for benchmarking.'
-    ]
+    notes: []
   }
 ];
 
@@ -130,20 +129,36 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;','<':'&lt;','>'
 
 const now = new Date();
 const nowIdx = now.getFullYear() * 12 + now.getMonth();
-const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ═══════════  live clock  ═══════════ */
 
 const clockEl = document.getElementById('clock');
-
 function tick() {
   const d = new Date();
-  const t = d.toLocaleTimeString('en-GB', { timeZone: 'Europe/Berlin', hour12: false });
-  clockEl.textContent = t;
+  clockEl.textContent = d.toLocaleTimeString('en-GB', { timeZone: 'Europe/Berlin', hour12: false });
   clockEl.setAttribute('datetime', d.toISOString());
 }
 tick();
 setInterval(tick, 1000);
+
+/* ═══════════  projects  ═══════════ */
+
+const items = [...PROJECTS].sort((a, b) => b.updated.localeCompare(a.updated));
+const last = items.length - 1;
+const DAY = 86400000;
+
+items.forEach((p, i) => {
+  p.color = heatColor(last === 0 ? 1 : 1 - i / last);
+  const d = new Date(p.updated + 'T00:00:00Z');
+  p.stamp = d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+  p.year = d.getUTCFullYear();
+  const days = (now - d) / DAY;
+  p.state = days < 60 ? 'run' : days < 365 ? 'idle' : 'done';
+  p.stateLabel = { run: 'RUNNING', idle: 'IDLE', done: 'COMPLETED' }[p.state];
+});
+
+const featured = items.filter(p => p.featured);
+const archived = items.filter(p => !p.featured);
 
 /* ═══════════  counters  ═══════════ */
 
@@ -154,7 +169,7 @@ const gauges = [
   { val: Math.floor(totalMonths / 12), unit: 'y ' + (totalMonths % 12) + 'm', lbl: 'Experience' },
   { val: PROJECTS.length, unit: '', lbl: 'Repositories' },
   { val: ROLES.length, unit: '', lbl: 'Positions' },
-  { val: 4, unit: '×', lbl: 'Peak speedup' }
+  { val: items.filter(p => p.state === 'run').length, unit: '', lbl: 'Active now' }
 ];
 
 document.getElementById('gauges').innerHTML = gauges.map(g => `
@@ -167,19 +182,26 @@ document.getElementById('gauges').innerHTML = gauges.map(g => `
 
 const rolesEl = document.getElementById('roles');
 const axisEl = document.getElementById('axis');
-
 const spanLen = nowIdx - firstStart;
 
 for (let y = Math.ceil(firstStart / 12); y <= Math.floor(nowIdx / 12); y++) {
-  const tickEl = document.createElement('span');
-  tickEl.className = 'axis__tick';
-  tickEl.style.left = ((y * 12 - firstStart) / spanLen * 100) + '%';
-  tickEl.textContent = String(y).slice(2);
-  axisEl.appendChild(tickEl);
+  const t = document.createElement('span');
+  t.className = 'axis__tick';
+  t.style.left = ((y * 12 - firstStart) / spanLen * 100) + '%';
+  t.textContent = String(y).slice(2);
+  axisEl.appendChild(t);
 }
 
-ROLES.forEach((r, i) => {
-  const color = heatColor(ROLES.length === 1 ? 1 : 1 - i / (ROLES.length - 1));
+/* colour ramps across the featured roles only, so the student
+   entry never competes with them for attention */
+const featuredRoles = ROLES.filter(r => !r.minor);
+
+ROLES.forEach(r => {
+  const fi = featuredRoles.indexOf(r);
+  const color = r.minor
+    ? 'var(--faint)'
+    : heatColor(featuredRoles.length === 1 ? 1 : 1 - fi / (featuredRoles.length - 1));
+
   const startIdx = monthIndex(r.from);
   const endIdx = r.to ? monthIndex(r.to) : nowIdx;
   const left = (startIdx - firstStart) / spanLen * 100;
@@ -190,7 +212,7 @@ ROLES.forEach((r, i) => {
   const elapsed = [y ? y + 'y' : '', m ? m + 'm' : ''].filter(Boolean).join(' ');
 
   const li = document.createElement('li');
-  li.className = 'role' + (r.to ? '' : ' role--live');
+  li.className = 'role' + (r.to ? '' : ' role--live') + (r.minor ? ' role--minor' : '');
   li.innerHTML = `
     <div class="role__head">
       <span class="role__led" style="background:${color}; color:${color}"></span>
@@ -206,32 +228,14 @@ ROLES.forEach((r, i) => {
     <div class="role__track" aria-hidden="true">
       <span class="role__span" style="left:${left}%; width:${width}%; background:${color}; color:${color}"></span>
     </div>
-    <ul class="role__notes">${r.notes.map(n => `<li>${esc(n)}</li>`).join('')}</ul>`;
+    ${r.notes.length ? `<ul class="role__notes">${r.notes.map(n => `<li>${esc(n)}</li>`).join('')}</ul>` : ''}`;
   rolesEl.appendChild(li);
 });
 
 /* ═══════════  job queue  ═══════════ */
 
-const items = [...PROJECTS].sort((a, b) => b.updated.localeCompare(a.updated));
-const last = items.length - 1;
-const DAY = 86400000;
-
-items.forEach((p, i) => {
-  p.color = heatColor(last === 0 ? 1 : 1 - i / last);
-  const d = new Date(p.updated + 'T00:00:00Z');
-  p.stamp = d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
-  p.year = d.getUTCFullYear();
-
-  const days = (now - d) / DAY;
-  p.state = days < 60 ? 'run' : days < 365 ? 'idle' : 'done';
-  p.stateLabel = { run: 'RUNNING', idle: 'IDLE', done: 'COMPLETED' }[p.state];
-});
-
-const featured = items.filter(p => p.featured);
-const archived = items.filter(p => !p.featured);
-
 document.getElementById('queue').innerHTML = featured.map((p, i) => `
-  <li><a class="job" href="${esc(p.url)}" data-job="${i}">
+  <li><a class="job" href="${esc(p.url)}">
     <span class="job__id"><span class="job__swatch" style="background:${p.color}"></span>${String(i + 1).padStart(3, '0')}</span>
     <span class="job__name">${esc(p.name)}</span>
     <span class="job__what">${esc(p.what)}</span>
@@ -244,62 +248,3 @@ document.getElementById('archive-list').innerHTML = archived.map(p => `
   <li><a class="arch" href="${esc(p.url)}">
     <span>${esc(p.name)}</span><span class="arch__year">${p.year}</span>
   </a></li>`).join('');
-
-/* ═══════════  node map  ═══════════ */
-
-const TOTAL = 96, PER_JOB = 8;
-const rack = document.getElementById('rack');
-const hint = document.getElementById('rack-hint');
-const HINT_IDLE = 'One block per GPU. Hover to identify.';
-
-document.getElementById('rack-meta').textContent =
-  `${featured.length * PER_JOB} / ${TOTAL} allocated`;
-
-const cells = [];
-for (let i = 0; i < TOTAL; i++) {
-  const cell = document.createElement('div');
-  cell.className = 'cell';
-  cell.style.animationDelay = (reduced ? 0 : 0.1 + i * 0.009) + 's';
-
-  const j = Math.floor(i / PER_JOB);
-  if (j < featured.length) {
-    cell.classList.add('cell--job');
-    cell.style.background = featured[j].color;
-    cell.style.color = featured[j].color;
-    cell.dataset.job = String(j);
-    cell.title = featured[j].name;
-  }
-  rack.appendChild(cell);
-  cells.push(cell);
-}
-
-/* ═══════════  link the queue and the map  ═══════════ */
-
-const rows = [...document.querySelectorAll('.job')];
-
-function focusJob(i) {
-  rack.classList.add('is-focused');
-  cells.forEach(c => c.classList.toggle('is-lit', c.dataset.job === String(i)));
-  hint.textContent = `${featured[i].name} — ${PER_JOB} GPUs, ${featured[i].stateLabel.toLowerCase()}`;
-}
-
-function clearJob() {
-  rack.classList.remove('is-focused');
-  cells.forEach(c => c.classList.remove('is-lit'));
-  hint.textContent = HINT_IDLE;
-}
-
-rows.forEach((row, i) => {
-  row.addEventListener('mouseenter', () => focusJob(i));
-  row.addEventListener('focus', () => focusJob(i));
-  row.addEventListener('mouseleave', clearJob);
-  row.addEventListener('blur', clearJob);
-});
-
-cells.forEach(cell => {
-  if (!cell.dataset.job) return;
-  const i = Number(cell.dataset.job);
-  cell.addEventListener('mouseenter', () => { focusJob(i); rows[i].classList.add('is-hot'); });
-  cell.addEventListener('mouseleave', () => { clearJob(); rows[i].classList.remove('is-hot'); });
-  cell.addEventListener('click', () => { location.href = featured[i].url; });
-});

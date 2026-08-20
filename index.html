@@ -60,9 +60,9 @@
           and the <em>metal</em> it runs on.
         </h1>
         <p class="ident__lede">
-          Seven years of getting models to run somewhere real — on RADAR
-          hardware in a car, across a Slurm cluster, or entirely offline on
-          someone's own machine.
+          Seven years of getting models to run somewhere real — distributed
+          across a Slurm cluster, served through a traced inference pipeline,
+          or running entirely offline on someone's own machine.
         </p>
 
         <dl class="readout">
@@ -79,8 +79,8 @@
             <dd>Reutlingen, Germany</dd>
           </div>
           <div class="readout__cell">
-            <dt>Peak result</dt>
-            <dd>2&ndash;4&times; faster inference on an ARM target</dd>
+            <dt>Focus</dt>
+            <dd>Distributed training, cluster scheduling, inference optimization</dd>
           </div>
         </dl>
       </div>
@@ -90,13 +90,63 @@
 
       <div class="panel">
         <div class="panel__bar">
-          <span class="panel__title">Cluster</span>
-          <span class="panel__meta" id="rack-meta">&mdash;</span>
+          <span class="panel__title">Signal path</span>
+          <span class="panel__meta">model &rarr; metal</span>
         </div>
         <div class="panel__body">
-          <div class="rack" id="rack" role="img"
-               aria-label="Node map. Each block is a GPU; each coloured run is one project's allocation."></div>
-          <p class="rack__hint" id="rack-hint">One block per GPU. Hover to identify.</p>
+
+          <svg class="path" viewBox="0 0 340 306" role="img"
+               aria-label="Diagram of the training stack: model and data feed into PyTorch or TensorFlow, then into Autotrainer, then Slurm with DDP and FSDP, and finally onto the GPUs. Autotrainer and Slurm are the layer I work on.">
+
+            <!-- spine -->
+            <line class="path__spine" x1="170" y1="40" x2="170" y2="232"/>
+
+            <!-- the layer I work on -->
+            <rect class="path__zone" x="14" y="104" width="312" height="106" rx="4"/>
+            <text class="path__zonelbl" x="318" y="98" text-anchor="end">the layer I work on</text>
+
+            <!-- stages -->
+            <g class="path__stage">
+              <rect x="70" y="12" width="200" height="30" rx="3"/>
+              <text x="170" y="31" text-anchor="middle">Model &middot; Data</text>
+            </g>
+
+            <g class="path__stage">
+              <rect x="52" y="58" width="236" height="30" rx="3"/>
+              <text x="170" y="77" text-anchor="middle">PyTorch &middot; TensorFlow</text>
+            </g>
+
+            <g class="path__stage path__stage--mine">
+              <rect x="52" y="118" width="236" height="34" rx="3"/>
+              <text x="170" y="139" text-anchor="middle">Autotrainer</text>
+            </g>
+
+            <g class="path__stage path__stage--live">
+              <rect x="52" y="162" width="236" height="34" rx="3"/>
+              <text x="170" y="183" text-anchor="middle">Slurm &middot; DDP &middot; FSDP</text>
+            </g>
+
+            <!-- arrowheads -->
+            <path class="path__tip" d="M170 52 l-4 -7 h8 z"/>
+            <path class="path__tip" d="M170 112 l-4 -7 h8 z"/>
+            <path class="path__tip" d="M170 226 l-4 -7 h8 z"/>
+
+            <!-- metal -->
+            <g class="path__metal">
+              <rect x="52"  y="238" width="26" height="26" rx="2"/>
+              <rect x="86"  y="238" width="26" height="26" rx="2"/>
+              <rect x="120" y="238" width="26" height="26" rx="2"/>
+              <rect x="154" y="238" width="26" height="26" rx="2"/>
+              <rect x="188" y="238" width="26" height="26" rx="2"/>
+              <rect x="222" y="238" width="26" height="26" rx="2"/>
+              <rect x="256" y="238" width="26" height="26" rx="2"/>
+            </g>
+            <text class="path__foot" x="170" y="288" text-anchor="middle">GPU &middot; NODE &middot; METAL</text>
+
+            <!-- travelling packet -->
+            <circle class="path__packet" cx="170" cy="0" r="3.5"/>
+          </svg>
+
         </div>
       </div>
 
