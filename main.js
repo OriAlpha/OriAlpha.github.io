@@ -91,7 +91,7 @@ const PROJECTS = [
 
   { name: 'Llama3 Finetune', lang: 'Jupyter', updated: '2026-06-19', featured: true,
     url: 'https://github.com/OriAlpha/Llama3_Finetune',
-    what: 'Finetuning notebooks for Llama 3.' },
+    what: 'Fine-tunes Llama 3 for topic modelling. KeyBERT pulls keywords to build an instruction dataset, then LoRA adapters train on it in 4-bit through PEFT and BitsAndBytes.' },
 
   { name: 'House_Price_Prediction', lang: 'Jupyter', updated: '2026-06-16', url: 'https://github.com/OriAlpha/House_Price_Prediction' },
   { name: 'Edge_Detection_Service', lang: 'Python',  updated: '2023-09-18', url: 'https://github.com/OriAlpha/Edge_Detection_Service' },
