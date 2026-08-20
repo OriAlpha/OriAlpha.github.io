@@ -8,7 +8,7 @@ four files and a font link.
 ```
 index.html    panel structure and copy
 styles.css    console palette + layout
-main.js       role data, project data, counters, timeline, queue
+main.js       role data, project data, timeline, queue
 .nojekyll     serve the files as-is, skip Jekyll
 ```
 
@@ -47,8 +47,8 @@ without bullets and at reduced weight. The student position uses it.
 }
 ```
 
-Every readout is computed from those two arrays — the counters, the elapsed
-times, the axis, the job states. Nothing is hard-coded, so keeping `updated`
+Every readout is computed from those two arrays — the elapsed times, the
+axis, the job states. Nothing is hard-coded, so keeping `updated`
 accurate is the only maintenance the page needs.
 
 ## Design notes
@@ -70,8 +70,8 @@ page.
 Job state comes from a stated rule rather than a claim: pushed within 60 days
 reads RUNNING, within the year IDLE, older COMPLETED. The real date sits in
 the next column, so the state is a view over the data and never a substitute
-for it. Same for the counters — experience is computed from my first start
-date, not typed in.
+for it. The axis is the same: it runs from my first start date to today and
+extends itself, rather than being a fixed range I maintain.
 
 Type is Saira, one variable family carrying both the condensed instrument
 labels and the body text, with JetBrains Mono for telemetry.

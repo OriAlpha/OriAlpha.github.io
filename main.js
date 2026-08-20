@@ -2,12 +2,11 @@
    Suhas Goravale Siddaramu — ML infrastructure
 
    ROLES and PROJECTS drive every panel on the page. Edit them
-   and the timeline, the queue, the archive and the counters
-   all rebuild.
+   and the timeline, the queue and the archive all rebuild.
 
-   Every readout is derived from this data — the counters, the
-   elapsed times and the job states are computed, never typed
-   in, and the real date sits next to each one.
+   Every readout is derived from this data — the elapsed times,
+   the axis and the job states are computed, never typed in,
+   and the real date sits next to each one.
    =========================================================== */
 
 const ROLES = [
@@ -160,23 +159,8 @@ items.forEach((p, i) => {
 const featured = items.filter(p => p.featured);
 const archived = items.filter(p => !p.featured);
 
-/* ═══════════  counters  ═══════════ */
-
+/* firstStart also anchors the history axis below */
 const firstStart = Math.min(...ROLES.map(r => monthIndex(r.from)));
-const totalMonths = nowIdx - firstStart + 1;
-
-const gauges = [
-  { val: Math.floor(totalMonths / 12), unit: 'y ' + (totalMonths % 12) + 'm', lbl: 'Experience' },
-  { val: PROJECTS.length, unit: '', lbl: 'Repositories' },
-  { val: ROLES.length, unit: '', lbl: 'Positions' },
-  { val: items.filter(p => p.state === 'run').length, unit: '', lbl: 'Active now' }
-];
-
-document.getElementById('gauges').innerHTML = gauges.map(g => `
-  <div class="gauge">
-    <p class="gauge__val">${g.val}<small>${esc(g.unit)}</small></p>
-    <p class="gauge__lbl">${esc(g.lbl)}</p>
-  </div>`).join('');
 
 /* ═══════════  job history  ═══════════ */
 
