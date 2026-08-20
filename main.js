@@ -236,3 +236,50 @@ if (archiveEl) archiveEl.innerHTML = archived.map(p => `
   <li><a class="arch" href="${esc(p.url)}">
     <span>${esc(p.name)}</span><span class="arch__year">${p.year}</span>
   </a></li>`).join('');
+
+/* ═══════════  contact form  ═══════════
+   Plain HTML POST works with JS off; this upgrades it to submit
+   inline so the visitor is never bounced to another domain. */
+
+const cform = document.getElementById('cform');
+const cstatus = document.getElementById('cf-status');
+
+if (cform && cstatus) {
+  const send = cform.querySelector('.cform__send');
+  const wired = !cform.action.includes('YOUR_FORM_ID');
+
+  const say = (msg, state = '') => {
+    cstatus.textContent = msg;
+    if (state) cstatus.dataset.state = state; else delete cstatus.dataset.state;
+  };
+
+  if (!wired) {
+    /* no endpoint yet — say so plainly rather than posting into the void */
+    send.disabled = true;
+    say('Form not connected yet — use LinkedIn for now.', 'err');
+    cform.addEventListener('submit', e => e.preventDefault());
+  } else {
+    cform.addEventListener('submit', async e => {
+      e.preventDefault();
+      send.disabled = true;
+      say('Sending…');
+      try {
+        const res = await fetch(cform.action, {
+          method: 'POST',
+          body: new FormData(cform),
+          headers: { Accept: 'application/json' }
+        });
+        if (!res.ok) {
+          const d = await res.json().catch(() => ({}));
+          throw new Error(d?.errors?.[0]?.message || 'rejected');
+        }
+        cform.reset();
+        say('Sent — I will get back to you.', 'ok');
+      } catch (err) {
+        say('Could not send — try LinkedIn instead.', 'err');
+      } finally {
+        send.disabled = false;
+      }
+    });
+  }
+}

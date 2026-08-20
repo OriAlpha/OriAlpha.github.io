@@ -51,6 +51,24 @@ Every readout is computed from those two arrays — the elapsed times, the
 axis, the job states. Nothing is hard-coded, so keeping `updated`
 accurate is the only maintenance the page needs.
 
+## Connecting the contact form
+
+The form posts to [Formspree](https://formspree.io). Until it has an endpoint
+it disables itself and says so, rather than silently swallowing messages.
+
+1. Sign up at formspree.io and create a form (free tier: 50 submissions/month).
+2. Copy the form id from the endpoint it gives you — `https://formspree.io/f/<id>`.
+3. In `index.html`, replace `YOUR_FORM_ID` in the form's `action` with that id.
+4. Bump the `?v=` on both asset links, commit and push.
+
+Formspree emails submissions to the address on the account, so my address stays
+off the page. The hidden `_gotcha` field is a spam trap: bots fill it in,
+people never see it, and Formspree drops anything that has it set.
+
+With JavaScript off the form still submits as a normal HTML POST and lands on
+Formspree's own confirmation page. With JavaScript on it posts in the
+background and reports status inline.
+
 ## Design notes
 
 The page is an instrument console, because scheduling work onto hardware is
