@@ -132,13 +132,15 @@ const nowIdx = now.getFullYear() * 12 + now.getMonth();
 /* ═══════════  live clock  ═══════════ */
 
 const clockEl = document.getElementById('clock');
-function tick() {
-  const d = new Date();
-  clockEl.textContent = d.toLocaleTimeString('en-GB', { timeZone: 'Europe/Berlin', hour12: false });
-  clockEl.setAttribute('datetime', d.toISOString());
+if (clockEl) {
+  const tick = () => {
+    const d = new Date();
+    clockEl.textContent = d.toLocaleTimeString('en-GB', { timeZone: 'Europe/Berlin', hour12: false });
+    clockEl.setAttribute('datetime', d.toISOString());
+  };
+  tick();
+  setInterval(tick, 1000);
 }
-tick();
-setInterval(tick, 1000);
 
 /* ═══════════  projects  ═══════════ */
 
@@ -168,7 +170,7 @@ const rolesEl = document.getElementById('roles');
 const axisEl = document.getElementById('axis');
 const spanLen = nowIdx - firstStart;
 
-for (let y = Math.ceil(firstStart / 12); y <= Math.floor(nowIdx / 12); y++) {
+for (let y = axisEl ? Math.ceil(firstStart / 12) : Infinity; y <= Math.floor(nowIdx / 12); y++) {
   const t = document.createElement('span');
   t.className = 'axis__tick';
   t.style.left = ((y * 12 - firstStart) / spanLen * 100) + '%';
@@ -180,7 +182,7 @@ for (let y = Math.ceil(firstStart / 12); y <= Math.floor(nowIdx / 12); y++) {
    entry never competes with them for attention */
 const featuredRoles = ROLES.filter(r => !r.minor);
 
-ROLES.forEach(r => {
+if (rolesEl) ROLES.forEach(r => {
   const fi = featuredRoles.indexOf(r);
   const color = r.minor
     ? 'var(--faint)'
@@ -218,7 +220,8 @@ ROLES.forEach(r => {
 
 /* ═══════════  job queue  ═══════════ */
 
-document.getElementById('queue').innerHTML = featured.map((p, i) => `
+const queueEl = document.getElementById('queue');
+if (queueEl) queueEl.innerHTML = featured.map((p, i) => `
   <li><a class="job" href="${esc(p.url)}">
     <span class="job__id"><span class="job__swatch" style="background:${p.color}"></span>${String(i + 1).padStart(3, '0')}</span>
     <span class="job__name">${esc(p.name)}</span>
@@ -228,7 +231,8 @@ document.getElementById('queue').innerHTML = featured.map((p, i) => `
     <span class="job__when">${p.stamp}</span>
   </a></li>`).join('');
 
-document.getElementById('archive-list').innerHTML = archived.map(p => `
+const archiveEl = document.getElementById('archive-list');
+if (archiveEl) archiveEl.innerHTML = archived.map(p => `
   <li><a class="arch" href="${esc(p.url)}">
     <span>${esc(p.name)}</span><span class="arch__year">${p.year}</span>
   </a></li>`).join('');

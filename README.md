@@ -87,3 +87,8 @@ root and rebuilds in well under a minute.
 ```bash
 git add -A && git commit -m "Update" && git push
 ```
+
+If a change touches `index.html` together with `styles.css` or `main.js`, bump
+the `?v=` on both asset links in `index.html`. Browsers cache the CSS and JS
+harder than the HTML, and without the bump a visitor can end up running last
+week's script against this week's markup.
