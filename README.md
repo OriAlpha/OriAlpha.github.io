@@ -6,19 +6,19 @@ Plain HTML, CSS and JS. No build step, no dependencies, no framework — it is
 four files and a font link.
 
 ```
-index.html    structure and copy
-styles.css    design tokens + layout
-main.js       role data, project data, the timeline, the node map
+index.html    panel structure and copy
+styles.css    console palette + layout
+main.js       role data, project data, counters, timeline, node map
 .nojekyll     serve the files as-is, skip Jekyll
 ```
 
 ## Editing
 
-Two arrays at the top of `main.js` drive the whole page.
+Two arrays at the top of `main.js` drive every panel.
 
-`ROLES` builds the experience timeline. Bars sit on one shared axis running
-from my earliest start date to today, so the spans stay comparable and the
-axis extends itself as time passes:
+`ROLES` builds the job history. Bars sit on one shared axis running from my
+earliest start date to today, so the spans stay comparable and the axis
+extends itself as time passes:
 
 ```js
 {
@@ -44,8 +44,9 @@ axis extends itself as time passes:
 }
 ```
 
-Both lists sort newest-first and colour follows that order, so keeping
-`updated` accurate is the only maintenance the page needs.
+Every readout is computed from those two arrays — the counters, the elapsed
+times, the axis, the job states. Nothing is hard-coded, so keeping `updated`
+accurate is the only maintenance the page needs.
 
 Each `featured: true` project claims 8 blocks in the node map. Past eight
 featured projects the 96-block grid overflows — raise `TOTAL` or lower
@@ -53,22 +54,27 @@ featured projects the 96-block grid overflows — raise `TOTAL` or lower
 
 ## Design notes
 
-The page is laid out as a Slurm allocation, which is what I spend my days on.
-The node map is the cluster, the queue is the job list, and hovering either
-one highlights the other. Section labels are `--partition=` directives, and
-the experience section is `--partition=history` after `sacct`.
+The page is an instrument console, because scheduling work onto hardware is
+what I spend my days on. Panels are the sections, the node map is the cluster,
+and the queue is the job list — hovering either one highlights the other. Job
+history is `sacct`, the queue is `squeue`.
 
-Colour is a thermal ramp — blue, violet, magenta, orange — where warmth means
-recency. The same rule covers roles and repositories, so one legend explains
-everything. Exact dates sit beside every entry: the colour is a signal, the
-text is the record.
+Colour follows a cockpit convention: cyan is nominal, amber is active. The
+ramp runs cyan → violet → magenta → amber and encodes recency wherever it
+appears, across both roles and repositories, so one rule explains the whole
+page.
 
-Type is Archivo for display at expanded width, IBM Plex Sans and Plex Mono for
-body and data.
+Job state comes from a stated rule rather than a claim: pushed within 60 days
+reads RUNNING, within the year IDLE, older COMPLETED. The real date sits in
+the next column, so the state is a view over the data and never a substitute
+for it. Same for the counters — experience is computed from my first start
+date, not typed in.
 
-Dark mode follows the system setting. Contrast passes WCAG AA in both themes,
-animation respects `prefers-reduced-motion`, and every project row is
-keyboard-focusable.
+Type is Saira, one variable family carrying both the condensed instrument
+labels and the body text, with JetBrains Mono for telemetry.
+
+Contrast passes WCAG AA throughout, animation respects
+`prefers-reduced-motion`, and every project row is keyboard-focusable.
 
 ## Deploying
 

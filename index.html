@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Suhas Goravale Siddaramu — ML infrastructure</title>
 <meta name="description" content="Computer Research Scientist, AI at Universitätsklinikum Tübingen. Distributed training, Slurm clusters, inference optimization and local-first RAG.">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="dark">
 
 <meta property="og:title" content="Suhas Goravale Siddaramu — ML infrastructure">
 <meta property="og:description" content="Distributed training, Slurm clusters, inference optimization and local-first RAG.">
@@ -13,221 +13,233 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230F1420'/><rect x='7' y='7' width='7' height='7' fill='%23FF6B2C'/><rect x='18' y='7' width='7' height='7' fill='%23E0347E'/><rect x='7' y='18' width='7' height='7' fill='%237B3FD4'/><rect x='18' y='18' width='7' height='7' fill='%232F4BE0'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23070B14'/><rect x='6' y='16' width='4' height='10' fill='%232EE6D6'/><rect x='12' y='11' width='4' height='15' fill='%237B5CFF'/><rect x='18' y='14' width='4' height='12' fill='%23FF3D8B'/><rect x='24' y='6' width='4' height='20' fill='%23FFB020'/></svg>">
 </head>
 <body>
 
-<a class="skip" href="#history">Skip to content</a>
+<a class="skip" href="#main">Skip to content</a>
 
-<header class="bar">
-  <div class="wrap bar__inner">
-    <a class="bar__id" href="#top">
-      <span class="bar__dot" aria-hidden="true"></span>
-      suhas
-    </a>
-    <nav class="bar__nav" aria-label="Sections">
-      <a href="#history">Experience</a>
-      <a href="#work">Projects</a>
-      <a href="#stack">Stack</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<!-- ═══════════  STATUS BAR  ═══════════ -->
+<header class="status">
+  <div class="status__group">
+    <span class="led" aria-hidden="true"></span>
+    <span class="status__state">ONLINE</span>
+    <span class="status__sep" aria-hidden="true"></span>
+    <span class="status__host">suhas@tübingen</span>
+  </div>
+
+  <nav class="status__nav" aria-label="Sections">
+    <a href="#history">HISTORY</a>
+    <a href="#jobs">JOBS</a>
+    <a href="#stack">STACK</a>
+    <a href="#contact">CONTACT</a>
+  </nav>
+
+  <div class="status__group status__group--end">
+    <span class="status__tz">CEST</span>
+    <time class="status__clock" id="clock" datetime="">--:--:--</time>
   </div>
 </header>
 
-<main id="top">
+<main id="main" class="console">
 
-  <!-- ─────────────────────────  HERO  ───────────────────────── -->
-  <section class="hero">
-    <div class="wrap hero__grid">
+  <!-- ═══════════  HERO  ═══════════ -->
+  <section class="deck">
 
-      <div class="hero__copy">
-        <p class="eyebrow">--partition=intro</p>
-        <h1 class="hero__head">
-          I work on the layer between
-          a model and the <em>metal</em>
-          it runs on.
+    <div class="panel panel--ident">
+      <div class="panel__bar">
+        <span class="panel__title">Operator</span>
+        <span class="panel__meta">ID 41699212</span>
+      </div>
+      <div class="panel__body ident">
+        <p class="ident__name">Suhas Goravale Siddaramu</p>
+        <h1 class="ident__thesis">
+          I work on the layer between a model
+          and the <em>metal</em> it runs on.
         </h1>
-        <p class="hero__lede">
+        <p class="ident__lede">
           Seven years of getting models to run somewhere real — on RADAR
           hardware in a car, across a Slurm cluster, or entirely offline on
           someone's own machine.
         </p>
-        <dl class="facts">
-          <div class="facts__row">
-            <dt>Now</dt>
-            <dd>Computer Research Scientist, AI &mdash; Universitätsklinikum Tübingen</dd>
+
+        <dl class="readout">
+          <div class="readout__cell">
+            <dt>Role</dt>
+            <dd>Computer Research Scientist, AI</dd>
           </div>
-          <div class="facts__row">
-            <dt>Based</dt>
+          <div class="readout__cell">
+            <dt>Site</dt>
+            <dd>Universitätsklinikum Tübingen</dd>
+          </div>
+          <div class="readout__cell">
+            <dt>Location</dt>
             <dd>Reutlingen, Germany</dd>
           </div>
-          <div class="facts__row">
-            <dt>Ask me about</dt>
-            <dd>Distributed training, pruning and quantization, ML on embedded ARM</dd>
-          </div>
-          <div class="facts__row">
-            <dt>Best result</dt>
-            <dd>2&ndash;4&times; faster inference, pruning and quantizing RADAR models onto an ARM target</dd>
+          <div class="readout__cell">
+            <dt>Peak result</dt>
+            <dd>2&ndash;4&times; faster inference on an ARM target</dd>
           </div>
         </dl>
       </div>
+    </div>
 
-      <figure class="rack">
-        <figcaption class="rack__cap">
-          <span class="rack__title">Allocation</span>
-          <span class="rack__meta" id="rack-meta">64 / 96 GPUs &middot; 8 jobs</span>
-        </figcaption>
-        <div class="rack__map" id="rack-map" role="img"
-             aria-label="A node map. Each block is a GPU; each coloured run of blocks is one project's allocation."></div>
-        <p class="rack__hint" id="rack-hint">One block per GPU. Hover a block to find its job.</p>
-      </figure>
+    <div class="deck__side">
+
+      <div class="panel">
+        <div class="panel__bar">
+          <span class="panel__title">Cluster</span>
+          <span class="panel__meta" id="rack-meta">&mdash;</span>
+        </div>
+        <div class="panel__body">
+          <div class="rack" id="rack" role="img"
+               aria-label="Node map. Each block is a GPU; each coloured run is one project's allocation."></div>
+          <p class="rack__hint" id="rack-hint">One block per GPU. Hover to identify.</p>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel__bar">
+          <span class="panel__title">Counters</span>
+          <span class="panel__meta">live</span>
+        </div>
+        <div class="panel__body gauges" id="gauges"></div>
+      </div>
 
     </div>
   </section>
 
-  <!-- ─────────────────────────  EXPERIENCE  ───────────────────────── -->
-  <section class="band" id="history">
-    <div class="wrap">
-      <div class="band__head">
-        <div>
-          <p class="eyebrow">--partition=history</p>
-          <h2 class="band__title">Where I've worked</h2>
-        </div>
-        <p class="band__note band__note--flush">Bars run on one shared axis, so the spans are comparable.</p>
-      </div>
-
+  <!-- ═══════════  JOB HISTORY  ═══════════ -->
+  <section class="panel" id="history">
+    <div class="panel__bar">
+      <span class="panel__title">Job history</span>
+      <span class="panel__meta">sacct &middot; one shared axis</span>
+    </div>
+    <div class="panel__body">
       <div class="axis" id="axis" aria-hidden="true"></div>
       <ol class="roles" id="roles"></ol>
     </div>
   </section>
 
-  <!-- ─────────────────────────  WORK  ───────────────────────── -->
-  <section class="band" id="work">
-    <div class="wrap">
-      <div class="band__head">
-        <div>
-          <p class="eyebrow">--partition=work</p>
-          <h2 class="band__title">Things I've built</h2>
-        </div>
-        <div class="legend">
-          <span class="legend__label">older</span>
-          <span class="legend__ramp" aria-hidden="true"></span>
-          <span class="legend__label">recent</span>
-        </div>
+  <!-- ═══════════  ACTIVE JOBS  ═══════════ -->
+  <section class="panel" id="jobs">
+    <div class="panel__bar">
+      <span class="panel__title">Job queue</span>
+      <span class="panel__meta">squeue &middot; state from last push</span>
+    </div>
+    <div class="panel__body">
+      <div class="qhead" aria-hidden="true">
+        <span>ID</span><span>Name</span><span>Description</span>
+        <span>Lang</span><span>State</span><span>Updated</span>
       </div>
-
       <ol class="queue" id="queue"></ol>
+
+      <div class="qlegend">
+        <span><i class="dot dot--run"></i>RUNNING &mdash; pushed in the last 60 days</span>
+        <span><i class="dot dot--idle"></i>IDLE &mdash; within the year</span>
+        <span><i class="dot dot--done"></i>COMPLETED &mdash; older</span>
+      </div>
     </div>
   </section>
 
-  <!-- ─────────────────────────  ARCHIVE  ───────────────────────── -->
-  <section class="band band--tight" id="archive">
-    <div class="wrap">
-      <p class="eyebrow">--partition=archive</p>
-      <h2 class="band__title">Completed</h2>
-      <p class="band__note">Earlier repositories, left as they were.</p>
+  <!-- ═══════════  ARCHIVE  ═══════════ -->
+  <section class="panel" id="archive">
+    <div class="panel__bar">
+      <span class="panel__title">Archive</span>
+      <span class="panel__meta">earlier repositories</span>
+    </div>
+    <div class="panel__body">
       <ul class="archive" id="archive-list"></ul>
     </div>
   </section>
 
-  <!-- ─────────────────────────  STACK  ───────────────────────── -->
-  <section class="band" id="stack">
-    <div class="wrap">
-      <p class="eyebrow">--partition=stack</p>
-      <h2 class="band__title">What I reach for</h2>
-
-      <div class="stack">
-        <div class="stack__col">
-          <h3 class="stack__name">Programming</h3>
-          <ul class="chips">
-            <li>Python</li><li>Bash</li><li>SQL</li><li>C</li>
-          </ul>
-        </div>
-        <div class="stack__col">
-          <h3 class="stack__name">Training &amp; inference</h3>
-          <ul class="chips">
-            <li>PyTorch</li><li>DDP</li><li>FSDP</li><li>TensorFlow</li><li>Keras</li>
-            <li>ONNX</li><li>TVM</li><li>scikit-learn</li><li>OpenCV</li>
-          </ul>
-        </div>
-        <div class="stack__col">
-          <h3 class="stack__name">LLM &amp; retrieval</h3>
-          <ul class="chips">
-            <li>HuggingFace</li><li>LangChain</li><li>Ollama</li>
-            <li>FAISS</li><li>Vector databases</li>
-          </ul>
-        </div>
-        <div class="stack__col">
-          <h3 class="stack__name">Clusters &amp; MLOps</h3>
-          <ul class="chips">
-            <li>Slurm</li><li>Docker</li><li>Kubernetes</li><li>Podman</li>
-            <li>GitLab CI</li><li>GitHub Actions</li><li>Argo Workflows</li>
-            <li>GCP</li><li>AWS</li>
-          </ul>
-        </div>
-        <div class="stack__col">
-          <h3 class="stack__name">Data</h3>
-          <ul class="chips">
-            <li>pandas</li><li>NumPy</li><li>Matplotlib</li><li>Seaborn</li>
-          </ul>
-        </div>
-        <div class="stack__col">
-          <h3 class="stack__name">Environment</h3>
-          <ul class="chips">
-            <li>Linux</li><li>uv</li><li>Anaconda</li><li>LaTeX</li><li>Jira</li>
-          </ul>
-        </div>
-      </div>
+  <!-- ═══════════  STACK  ═══════════ -->
+  <section class="panel" id="stack">
+    <div class="panel__bar">
+      <span class="panel__title">Stack</span>
+      <span class="panel__meta">what I reach for</span>
     </div>
-  </section>
-
-  <!-- ─────────────────────────  EDUCATION  ───────────────────────── -->
-  <section class="band band--tight" id="education">
-    <div class="wrap">
-      <p class="eyebrow">--partition=education</p>
-      <h2 class="band__title">Studied</h2>
-
-      <div class="edu">
-        <ul class="edu__list">
-          <li class="degree">
-            <span class="degree__title">M.Sc. Embedded Systems</span>
-            <span class="degree__where">Technische Universität Chemnitz</span>
-            <span class="degree__when">2017 &ndash; 2021</span>
-          </li>
-          <li class="degree">
-            <span class="degree__title">B.E. Electronics &amp; Communication Engineering</span>
-            <span class="degree__where">Visvesvaraya Technological University, India</span>
-            <span class="degree__when">2012 &ndash; 2016</span>
-          </li>
+    <div class="panel__body stack">
+      <div class="stack__col">
+        <h3 class="stack__name">Programming</h3>
+        <ul class="chips"><li>Python</li><li>Bash</li><li>SQL</li><li>C</li></ul>
+      </div>
+      <div class="stack__col">
+        <h3 class="stack__name">Training &amp; inference</h3>
+        <ul class="chips">
+          <li>PyTorch</li><li>DDP</li><li>FSDP</li><li>TensorFlow</li><li>Keras</li>
+          <li>ONNX</li><li>TVM</li><li>scikit-learn</li><li>OpenCV</li>
         </ul>
-
-        <div class="langs">
-          <h3 class="stack__name">Languages</h3>
-          <ul class="lang__list">
-            <li><span>English</span><span class="lang__lvl">Native</span></li>
-            <li><span>Kannada</span><span class="lang__lvl">Native</span></li>
-            <li><span>German</span><span class="lang__lvl">B1</span></li>
-          </ul>
-        </div>
+      </div>
+      <div class="stack__col">
+        <h3 class="stack__name">LLM &amp; retrieval</h3>
+        <ul class="chips">
+          <li>HuggingFace</li><li>LangChain</li><li>Ollama</li><li>FAISS</li><li>Vector DBs</li>
+        </ul>
+      </div>
+      <div class="stack__col">
+        <h3 class="stack__name">Clusters &amp; MLOps</h3>
+        <ul class="chips">
+          <li>Slurm</li><li>Docker</li><li>Kubernetes</li><li>Podman</li>
+          <li>Argo Workflows</li><li>GitLab CI</li><li>GitHub Actions</li><li>GCP</li><li>AWS</li>
+        </ul>
+      </div>
+      <div class="stack__col">
+        <h3 class="stack__name">Data</h3>
+        <ul class="chips"><li>pandas</li><li>NumPy</li><li>Matplotlib</li><li>Seaborn</li></ul>
+      </div>
+      <div class="stack__col">
+        <h3 class="stack__name">Environment</h3>
+        <ul class="chips"><li>Linux</li><li>uv</li><li>Anaconda</li><li>LaTeX</li><li>Jira</li></ul>
       </div>
     </div>
   </section>
 
-  <!-- ─────────────────────────  CONTACT  ───────────────────────── -->
-  <section class="band band--end" id="contact">
-    <div class="wrap contact">
-      <p class="eyebrow">--partition=contact</p>
-      <h2 class="contact__head">Open to work on inference<br>optimization and deployment.</h2>
+  <!-- ═══════════  EDUCATION  ═══════════ -->
+  <section class="panel" id="education">
+    <div class="panel__bar">
+      <span class="panel__title">Education</span>
+      <span class="panel__meta">&amp; languages</span>
+    </div>
+    <div class="panel__body edu">
+      <ul class="edu__list">
+        <li class="degree">
+          <span class="degree__title">M.Sc. Embedded Systems</span>
+          <span class="degree__where">Technische Universität Chemnitz</span>
+          <span class="degree__when">2017&ndash;2021</span>
+        </li>
+        <li class="degree">
+          <span class="degree__title">B.E. Electronics &amp; Communication</span>
+          <span class="degree__where">Visvesvaraya Technological University, India</span>
+          <span class="degree__when">2012&ndash;2016</span>
+        </li>
+      </ul>
+      <ul class="langs">
+        <li><span>English</span><b>Native</b></li>
+        <li><span>Kannada</span><b>Native</b></li>
+        <li><span>German</span><b>B1</b></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══════════  CONTACT  ═══════════ -->
+  <section class="panel panel--contact" id="contact">
+    <div class="panel__bar">
+      <span class="panel__title">Contact</span>
+      <span class="panel__meta">accepting jobs</span>
+    </div>
+    <div class="panel__body contact">
+      <h2 class="contact__head">Open to work on inference optimization and deployment.</h2>
       <p class="contact__note">
         Happy to talk about distributed training, cluster scheduling, or
         getting a model small enough to actually ship.
       </p>
       <ul class="links">
-        <li><a href="mailto:suhasgoravale@gmail.com">Email <span aria-hidden="true">&#8599;</span></a></li>
-        <li><a href="https://www.linkedin.com/in/goravalesuhas">LinkedIn <span aria-hidden="true">&#8599;</span></a></li>
-        <li><a href="https://github.com/OriAlpha">GitHub <span aria-hidden="true">&#8599;</span></a></li>
+        <li><a href="mailto:suhasgoravale@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/goravalesuhas">LinkedIn</a></li>
+        <li><a href="https://github.com/OriAlpha">GitHub</a></li>
       </ul>
     </div>
   </section>
@@ -235,9 +247,7 @@
 </main>
 
 <footer class="foot">
-  <div class="wrap foot__inner">
-    <span>Suhas Goravale Siddaramu &middot; Reutlingen, Germany</span>
-  </div>
+  <span>Suhas Goravale Siddaramu &middot; Reutlingen, Germany</span>
 </footer>
 
 <script src="main.js"></script>
