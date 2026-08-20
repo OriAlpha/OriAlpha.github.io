@@ -8,7 +8,7 @@ four files and a font link.
 ```
 index.html    panel structure and copy
 styles.css    console palette + layout
-main.js       role data, project data, counters, timeline, node map
+main.js       role data, project data, counters, timeline, queue
 .nojekyll     serve the files as-is, skip Jekyll
 ```
 
@@ -31,7 +31,10 @@ extends itself as time passes:
 }
 ```
 
-`PROJECTS` builds the queue, the archive and the node map:
+Add `minor: true` to a role to list it quietly — dated and present, but
+without bullets and at reduced weight. The student position uses it.
+
+`PROJECTS` builds the job queue and the archive:
 
 ```js
 {
@@ -47,10 +50,6 @@ extends itself as time passes:
 Every readout is computed from those two arrays — the counters, the elapsed
 times, the axis, the job states. Nothing is hard-coded, so keeping `updated`
 accurate is the only maintenance the page needs.
-
-Each `featured: true` project claims 8 blocks in the node map. Past eight
-featured projects the 96-block grid overflows — raise `TOTAL` or lower
-`PER_JOB` to fit.
 
 ## Design notes
 
