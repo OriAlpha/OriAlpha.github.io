@@ -267,6 +267,29 @@ a { color: inherit; text-decoration: none; }
 .path__lbl.path__stage--opt  { fill: #FF8FB8; font-variation-settings: "wdth" 95, "wght" 650; }
 .path__sub.path__stage--opt  { fill: #E88BAC; }
 
+/* interactive diagram links & micro-interactions */
+.path a {
+  cursor: pointer;
+  outline: none;
+}
+.path a .path__box {
+  transition: transform .18s var(--ease), stroke .18s var(--ease), filter .18s var(--ease);
+}
+.path a:hover .path__box {
+  filter: brightness(1.3);
+  stroke-width: 1.5px;
+}
+.path a:hover .path__lbl {
+  text-shadow: 0 0 10px currentColor;
+}
+.path a:focus-visible .path__box {
+  stroke: var(--cyan);
+  stroke-width: 2px;
+}
+.path__wire--dash {
+  stroke-dasharray: 2 3;
+}
+
 /* ─────────────  job history  ───────────── */
 
 .axis { position: relative; height: 1.3rem; border-bottom: 1px solid var(--edge); }

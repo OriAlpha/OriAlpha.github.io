@@ -17,10 +17,10 @@ const ROLES = [
     from: '2024-08',
     to: null,                       // null = current
     notes: [
-      'Built and deployed a RAG chatbot with automated summarization to speed up study work.',
-      'Wrote AutoTrainer, which detects the hardware and distributes training across local GPUs or a Slurm cluster.',
-      'PyTorch DDP and FSDP, TensorFlow distributed training, AMP, TF32, and automated hyperparameter search.',
-      'Ran and scaled ML workloads on Slurm-based HPC, plus CI/CD for testing, containerization and deployment.'
+      'Architected and deployed private agentic RAG and automated summarization pipelines for clinical studies.',
+      'Engineered AutoTrainer to automate hardware detection and distribute training across multi-GPU setups and Slurm HPC clusters.',
+      'Scaled workloads using PyTorch DDP/FSDP, mixed precision (AMP/TF32), and automated hyperparameter optimization.',
+      'Orchestrated large-scale ML workloads on Slurm HPC clusters with containerized CI/CD deployment.'
     ]
   },
   {
@@ -30,10 +30,10 @@ const ROLES = [
     from: '2022-04',
     to: '2024-07',
     notes: [
-      'NLP for summarization, paraphrasing and named entity recognition, fine-tuning LLMs with supervised and reinforcement learning via HuggingFace.',
-      'Cut compute cost through pruning, quantization and hyperparameter tuning.',
-      'Cross-framework conversion and deployment across PyTorch, ONNX and TensorFlow.',
-      'Scalable training with DDP and FSDP, containerized on GCP through Argo Workflows.'
+      'Fine-tuned LLMs with supervised and reinforcement learning via HuggingFace for summarization, paraphrasing, and named entity recognition.',
+      'Reduced inference latency and compute costs through structured pruning, quantization, and graph optimization.',
+      'Cross-framework conversion and deployment across PyTorch, ONNX, and TensorFlow.',
+      'Scaled distributed training using DDP and FSDP, containerized on GCP with Argo Workflows.'
     ]
   },
   {
@@ -43,9 +43,9 @@ const ROLES = [
     from: '2021-01',
     to: '2022-03',
     notes: [
-      'Built an AI assistant over ICU patient data using time series models for clinical decision support.',
-      'Data mining and feature engineering on clinical datasets; improved ultrasound image classification precision.',
-      'End-to-end Python pipelines for preprocessing, training and evaluation.'
+      'Developed predictive time-series models over ICU patient telemetry for clinical decision support systems.',
+      'Engineered feature pipelines on clinical datasets and improved ultrasound image classification accuracy.',
+      'Constructed end-to-end ML pipelines for automated preprocessing, training, and model evaluation.'
     ]
   },
   {
@@ -71,7 +71,7 @@ const PROJECTS = [
 
   { name: 'Percentify', lang: 'Kotlin', updated: '2026-07-30', featured: true,
     url: 'https://github.com/OriAlpha/Percentify',
-    what: 'A percentage tracker for Android.' },
+    what: 'Minimalist percentage and proportion calculator for Android built with Kotlin and Jetpack Compose.' },
 
   { name: 'The Vault', lang: 'Python', updated: '2026-06-19', featured: true,
     url: 'https://github.com/OriAlpha/Local-RAG-System',
