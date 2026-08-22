@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=13">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23070B14'/><rect x='6' y='16' width='4' height='10' fill='%232EE6D6'/><rect x='12' y='11' width='4' height='15' fill='%237B5CFF'/><rect x='18' y='14' width='4' height='12' fill='%23FF3D8B'/><rect x='24' y='6' width='4' height='20' fill='%23FFB020'/></svg>">
 </head>
 <body>
@@ -92,7 +92,7 @@
     </div>
     <div class="panel__body">
       <div class="pathwrap">
-          <svg class="path" viewBox="0 0 1128 244" role="img" aria-label="The full path a model takes. Training: model and data split into PyTorch with Autotrainer for distributed training, and HuggingFace with LoRA, LoReFT and PEFT adapters; both converge on Slurm across GPU nodes. Serving: the trained model splits into quantization and pruning through ONNX and TVM, and RAG and agent pipelines on FAISS and Ollama; both converge on InfraSight for traces and evals, and are served.">
+<svg class="path" viewBox="0 0 1128 244" role="img" aria-label="The full path a model takes. Training: model and data split into PyTorch with Autotrainer for distributed training, and HuggingFace with LoRA, LoReFT and PEFT adapters; both converge on Slurm across GPU nodes. Serving: quantization and pruning through ONNX and TVM, and RAG and agent pipelines on FAISS and Ollama; both converge on InfraSight for traces and evals, and are served.">
           <line class="path__divide" x1="686" y1="34" x2="686" y2="212"/>
           <text class="path__phase" x="24" y="24">Train</text>
           <text class="path__phase" x="700" y="24">Serve</text>
@@ -104,6 +104,10 @@
           <path class="path__tip" d="M174 104 l-7 -4 v8 z"/>
           <line class="path__wire" x1="164" y1="168" x2="168" y2="168"/>
           <path class="path__tip" d="M174 168 l-7 -4 v8 z"/>
+          <rect class="path__box" x="178" y="78" width="126" height="52" rx="3"/>
+          <text class="path__lbl" x="241.0" y="109" text-anchor="middle">PyTorch · TF</text>
+          <rect class="path__box" x="178" y="142" width="126" height="52" rx="3"/>
+          <text class="path__lbl" x="241.0" y="173" text-anchor="middle">HuggingFace</text>
           <line class="path__wire" x1="308" y1="104" x2="322" y2="104"/>
           <path class="path__tip" d="M328 104 l-7 -4 v8 z"/>
           <line class="path__wire" x1="308" y1="168" x2="322" y2="168"/>
@@ -291,6 +295,6 @@
   <span>Suhas Goravale Siddaramu &middot; Reutlingen, Germany</span>
 </footer>
 
-<script src="main.js?v=12"></script>
+<script src="main.js?v=13"></script>
 </body>
 </html>
