@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=12">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23070B14'/><rect x='6' y='16' width='4' height='10' fill='%232EE6D6'/><rect x='12' y='11' width='4' height='15' fill='%237B5CFF'/><rect x='18' y='14' width='4' height='12' fill='%23FF3D8B'/><rect x='24' y='6' width='4' height='20' fill='%23FFB020'/></svg>">
 </head>
 <body>
@@ -46,130 +46,108 @@
 <main id="main" class="console">
 
   <!-- ═══════════  HERO  ═══════════ -->
-  <section class="deck">
-
-    <div class="panel panel--ident">
-      <div class="panel__bar">
-        <span class="panel__title">Operator</span>
-        <span class="panel__meta">ml infrastructure</span>
-      </div>
-      <div class="panel__body ident">
-        <p class="ident__name">Suhas Goravale Siddaramu</p>
-        <h1 class="ident__thesis">
-          I work on the layer between a model
-          and the <em>metal</em> it runs on.
-        </h1>
-        <p class="ident__lede">
-          Five years of getting models to run somewhere real — distributed
-          across a Slurm cluster, served through a traced inference pipeline,
-          or running entirely offline on someone's own machine.
-        </p>
-
-        <dl class="readout">
-          <div class="readout__cell">
-            <dt>Role</dt>
-            <dd>Computer Research Scientist, AI</dd>
-          </div>
-          <div class="readout__cell">
-            <dt>Site</dt>
-            <dd>Universitätsklinikum Tübingen</dd>
-          </div>
-          <div class="readout__cell">
-            <dt>Location</dt>
-            <dd>Reutlingen, Germany</dd>
-          </div>
-          <div class="readout__cell">
-            <dt>Focus</dt>
-            <dd>LLM fine-tuning and serving &middot; agentic RAG pipelines &middot; multi-node training &middot; inference optimization</dd>
-          </div>
-        </dl>
-      </div>
+  <div class="panel panel--ident">
+    <div class="panel__bar">
+      <span class="panel__title">Operator</span>
+      <span class="panel__meta">ml infrastructure</span>
     </div>
+    <div class="panel__body ident">
+      <p class="ident__name">Suhas Goravale Siddaramu</p>
+      <h1 class="ident__thesis">
+        I work on the layer between a model
+        and the <em>metal</em> it runs on.
+      </h1>
+      <p class="ident__lede">
+        Five years of getting models to run somewhere real — distributed
+        across a Slurm cluster, served through a traced inference pipeline,
+        or running entirely offline on someone's own machine.
+      </p>
 
-    <div class="deck__side">
-
-      <div class="panel">
-        <div class="panel__bar">
-          <span class="panel__title">Signal path</span>
-          <span class="panel__meta">model &rarr; metal</span>
+      <dl class="readout">
+        <div class="readout__cell">
+          <dt>Role</dt>
+          <dd>Computer Research Scientist, AI</dd>
         </div>
-        <div class="panel__body">
+        <div class="readout__cell">
+          <dt>Site</dt>
+          <dd>Universitätsklinikum Tübingen</dd>
+        </div>
+        <div class="readout__cell">
+          <dt>Location</dt>
+          <dd>Reutlingen, Germany</dd>
+        </div>
+        <div class="readout__cell">
+          <dt>Focus</dt>
+          <dd>LLM fine-tuning and serving &middot; agentic RAG pipelines &middot; multi-node training &middot; inference optimization</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
 
-          <svg class="path" viewBox="0 0 340 336" role="img"
-               aria-label="Two training tracks that meet on the same cluster. Left: PyTorch and TensorFlow through Autotrainer. Right: HuggingFace through LoRA, LoReFT and PEFT adapters. Both converge on Slurm with DDP and FSDP, and run on the GPUs.">
-
-            <!-- trunk down from the source, then the split -->
-            <line class="path__spine" x1="170" y1="42"  x2="170" y2="54"/>
-            <line class="path__spine" x1="89"  y1="54"  x2="251" y2="54"/>
-            <line class="path__spine" x1="89"  y1="54"  x2="89"  y2="66"/>
-            <line class="path__spine" x1="251" y1="54"  x2="251" y2="66"/>
-
-            <!-- each track continues down into the working layer -->
-            <line class="path__spine" x1="89"  y1="96"  x2="89"  y2="122"/>
-            <line class="path__spine" x1="251" y1="96"  x2="251" y2="122"/>
-
-            <!-- the two tracks meet again -->
-            <line class="path__spine" x1="89"  y1="172" x2="89"  y2="186"/>
-            <line class="path__spine" x1="251" y1="172" x2="251" y2="186"/>
-            <line class="path__spine" x1="89"  y1="186" x2="251" y2="186"/>
-            <line class="path__spine" x1="170" y1="186" x2="170" y2="198"/>
-
-            <line class="path__spine" x1="170" y1="238" x2="170" y2="262"/>
-
-            <!-- the layer I work on -->
-            <rect class="path__zone" x="10" y="112" width="320" height="126" rx="4"/>
-            <text class="path__zonelbl" x="330" y="106" text-anchor="end">the layer I work on</text>
-
-            <g class="path__stage">
-              <rect x="90" y="12" width="160" height="30" rx="3"/>
-              <text x="170" y="31" text-anchor="middle">Model &middot; Data</text>
-            </g>
-
-            <g class="path__stage">
-              <rect x="18" y="66" width="142" height="30" rx="3"/>
-              <text x="89" y="85" text-anchor="middle">PyTorch &middot; TF</text>
-            </g>
-            <g class="path__stage">
-              <rect x="180" y="66" width="142" height="30" rx="3"/>
-              <text x="251" y="85" text-anchor="middle">HuggingFace</text>
-            </g>
-
-            <g class="path__stage path__stage--mine">
-              <rect x="18" y="122" width="142" height="50" rx="3"/>
-              <text x="89" y="143" text-anchor="middle">Autotrainer</text>
-              <text class="path__sub" x="89" y="159" text-anchor="middle">distributed training</text>
-            </g>
-            <g class="path__stage path__stage--tune">
-              <rect x="180" y="122" width="142" height="50" rx="3"/>
-              <text x="251" y="143" text-anchor="middle">LoRA &middot; LoReFT</text>
-              <text class="path__sub" x="251" y="159" text-anchor="middle">PEFT &middot; 4-bit</text>
-            </g>
-
-            <g class="path__stage path__stage--live">
-              <rect x="52" y="198" width="236" height="34" rx="3"/>
-              <text x="170" y="219" text-anchor="middle">Slurm &middot; DDP &middot; FSDP</text>
-            </g>
-
-            <path class="path__tip" d="M89 122 l-4 -7 h8 z"/>
-            <path class="path__tip" d="M251 122 l-4 -7 h8 z"/>
-            <path class="path__tip" d="M170 198 l-4 -7 h8 z"/>
-            <path class="path__tip" d="M170 268 l-4 -7 h8 z"/>
-
-            <g class="path__metal">
-              <rect x="52"  y="272" width="26" height="26" rx="2"/>
-              <rect x="86"  y="272" width="26" height="26" rx="2"/>
-              <rect x="120" y="272" width="26" height="26" rx="2"/>
-              <rect x="154" y="272" width="26" height="26" rx="2"/>
-              <rect x="188" y="272" width="26" height="26" rx="2"/>
-              <rect x="222" y="272" width="26" height="26" rx="2"/>
-              <rect x="256" y="272" width="26" height="26" rx="2"/>
-            </g>
-            <text class="path__foot" x="170" y="320" text-anchor="middle">GPU &middot; NODE &middot; METAL</text>
+  <!-- ═══════════  SIGNAL PATH  ═══════════ -->
+  <section class="panel" id="path">
+    <div class="panel__bar">
+      <span class="panel__title">Signal path</span>
+      <span class="panel__meta">model &rarr; metal &rarr; served</span>
+    </div>
+    <div class="panel__body">
+      <div class="pathwrap">
+          <svg class="path" viewBox="0 0 1128 244" role="img" aria-label="The full path a model takes. Training: model and data split into PyTorch with Autotrainer for distributed training, and HuggingFace with LoRA, LoReFT and PEFT adapters; both converge on Slurm across GPU nodes. Serving: the trained model splits into quantization and pruning through ONNX and TVM, and RAG and agent pipelines on FAISS and Ollama; both converge on InfraSight for traces and evals, and are served.">
+          <line class="path__divide" x1="686" y1="34" x2="686" y2="212"/>
+          <text class="path__phase" x="24" y="24">Train</text>
+          <text class="path__phase" x="700" y="24">Serve</text>
+          <rect class="path__box" x="24" y="110" width="126" height="52" rx="3"/>
+          <text class="path__lbl" x="87.0" y="141" text-anchor="middle">Model · Data</text>
+          <line class="path__wire" x1="154" y1="136" x2="164" y2="136"/>
+          <line class="path__wire" x1="164" y1="104" x2="164" y2="168"/>
+          <line class="path__wire" x1="164" y1="104" x2="168" y2="104"/>
+          <path class="path__tip" d="M174 104 l-7 -4 v8 z"/>
+          <line class="path__wire" x1="164" y1="168" x2="168" y2="168"/>
+          <path class="path__tip" d="M174 168 l-7 -4 v8 z"/>
+          <line class="path__wire" x1="308" y1="104" x2="322" y2="104"/>
+          <path class="path__tip" d="M328 104 l-7 -4 v8 z"/>
+          <line class="path__wire" x1="308" y1="168" x2="322" y2="168"/>
+          <path class="path__tip" d="M328 168 l-7 -4 v8 z"/>
+          <rect class="path__box path__stage--mine" x="332" y="78" width="141" height="52" rx="3"/>
+          <text class="path__lbl path__stage--mine" x="402.5" y="101" text-anchor="middle">Autotrainer</text>
+          <text class="path__sub path__stage--mine" x="402.5" y="118" text-anchor="middle">distributed training</text>
+          <rect class="path__box path__stage--tune" x="332" y="142" width="141" height="52" rx="3"/>
+          <text class="path__lbl path__stage--tune" x="402.5" y="165" text-anchor="middle">LoRA · LoReFT</text>
+          <text class="path__sub path__stage--tune" x="402.5" y="182" text-anchor="middle">PEFT · 4-bit</text>
+          <line class="path__wire" x1="477" y1="104" x2="487" y2="104"/>
+          <line class="path__wire" x1="477" y1="168" x2="487" y2="168"/>
+          <line class="path__wire" x1="487" y1="104" x2="487" y2="168"/>
+          <line class="path__wire" x1="487" y1="136" x2="491" y2="136"/>
+          <path class="path__tip" d="M497 136 l-7 -4 v8 z"/>
+          <rect class="path__box path__stage--live" x="501" y="110" width="171" height="52" rx="3"/>
+          <text class="path__lbl path__stage--live" x="586.5" y="133" text-anchor="middle">Slurm · DDP · FSDP</text>
+          <text class="path__sub path__stage--live" x="586.5" y="150" text-anchor="middle">GPU · NODE</text>
+          <line class="path__wire" x1="676" y1="136" x2="686" y2="136"/>
+          <line class="path__wire" x1="686" y1="104" x2="686" y2="168"/>
+          <line class="path__wire" x1="686" y1="104" x2="690" y2="104"/>
+          <path class="path__tip" d="M696 104 l-7 -4 v8 z"/>
+          <line class="path__wire" x1="686" y1="168" x2="690" y2="168"/>
+          <path class="path__tip" d="M696 168 l-7 -4 v8 z"/>
+          <rect class="path__box path__stage--opt" x="700" y="78" width="156" height="52" rx="3"/>
+          <text class="path__lbl path__stage--opt" x="778.0" y="101" text-anchor="middle">Quantize · Prune</text>
+          <text class="path__sub path__stage--opt" x="778.0" y="118" text-anchor="middle">ONNX · TVM</text>
+          <rect class="path__box path__stage--rag" x="700" y="142" width="156" height="52" rx="3"/>
+          <text class="path__lbl path__stage--rag" x="778.0" y="165" text-anchor="middle">RAG · Agents</text>
+          <text class="path__sub path__stage--rag" x="778.0" y="182" text-anchor="middle">FAISS · Ollama</text>
+          <line class="path__wire" x1="860" y1="104" x2="870" y2="104"/>
+          <line class="path__wire" x1="860" y1="168" x2="870" y2="168"/>
+          <line class="path__wire" x1="870" y1="104" x2="870" y2="168"/>
+          <line class="path__wire" x1="870" y1="136" x2="874" y2="136"/>
+          <path class="path__tip" d="M880 136 l-7 -4 v8 z"/>
+          <rect class="path__box path__stage--obs" x="884" y="110" width="111" height="52" rx="3"/>
+          <text class="path__lbl path__stage--obs" x="939.5" y="133" text-anchor="middle">InfraSight</text>
+          <text class="path__sub path__stage--obs" x="939.5" y="150" text-anchor="middle">traces · evals</text>
+          <line class="path__wire" x1="999" y1="136" x2="1013" y2="136"/>
+          <path class="path__tip" d="M1019 136 l-7 -4 v8 z"/>
+          <rect class="path__box" x="1023" y="110" width="81" height="52" rx="3"/>
+          <text class="path__lbl" x="1063.5" y="141" text-anchor="middle">Served</text>
           </svg>
-
-        </div>
       </div>
-
     </div>
   </section>
 
@@ -313,6 +291,6 @@
   <span>Suhas Goravale Siddaramu &middot; Reutlingen, Germany</span>
 </footer>
 
-<script src="main.js?v=11"></script>
+<script src="main.js?v=12"></script>
 </body>
 </html>
