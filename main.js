@@ -61,6 +61,10 @@ const ROLES = [
 ];
 
 const PROJECTS = [
+  { name: 'AutoDistiller', lang: 'Python', updated: '2026-08-30', featured: true,
+    url: 'https://github.com/OriAlpha/autodistiller',
+    what: 'Automatically finds the best LLM deployment config for your hardware and quality constraints. Compresses candidates (AWQ, FP8, INT8), evaluates accuracy retention, and benchmarks in real vLLM/llama.cpp servers.' },
+
   { name: 'Autotrainer', lang: 'Python', updated: '2026-08-10', featured: true,
     url: 'https://github.com/OriAlpha/Autotrainer',
     what: 'Hand it a model and data. It finds the hardware, picks the distribution strategy, and infers the loss, optimizer and schedule. PyTorch DDP and Slurm multi-node through one API.' },

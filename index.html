@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Saira:wdth,wght@62..125,300..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=15">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23070B14'/><rect x='6' y='16' width='4' height='10' fill='%232EE6D6'/><rect x='12' y='11' width='4' height='15' fill='%237B5CFF'/><rect x='18' y='14' width='4' height='12' fill='%23FF3D8B'/><rect x='24' y='6' width='4' height='20' fill='%23FFB020'/></svg>">
 </head>
 <body>
@@ -92,7 +92,7 @@
     </div>
     <div class="panel__body">
       <div class="pathwrap">
-        <svg class="path" viewBox="0 0 1128 244" role="img" aria-label="The full path a model takes. Training: model and data split into PyTorch with Autotrainer for distributed training, and HuggingFace with LoRA, LoReFT and PEFT adapters; both converge on Slurm across GPU nodes, guided by SlurmGenie. Serving: quantization and pruning through vLLM, ONNX, and GGUF, and RAG and agent pipelines on FAISS, Ollama, and LangChain; both converge on InfraSight for traces and evals, and are served.">
+        <svg class="path" viewBox="0 0 1128 244" role="img" aria-label="The full path a model takes. Training: model and data split into PyTorch with Autotrainer for distributed training, and HuggingFace with LoRA, LoReFT and PEFT adapters; both converge on Slurm across GPU nodes, guided by SlurmGenie. Serving: quantization and pruning through AutoDistiller across vLLM and llama.cpp, and RAG and agent pipelines on FAISS, Ollama, and LangChain; both converge on InfraSight for traces and evals, and are served.">
           <line class="path__divide" x1="660" y1="34" x2="660" y2="212"/>
           <text class="path__phase" x="24" y="24">Train</text>
           <text class="path__phase" x="674" y="24">Serve</text>
@@ -163,9 +163,11 @@
           <path class="path__tip" d="M688 168 l-7 -4 v8 z"/>
 
           <!-- Serving & Retrieval -->
-          <rect class="path__box path__stage--opt" x="692" y="78" width="156" height="52" rx="3"/>
-          <text class="path__lbl path__stage--opt" x="770.0" y="101" text-anchor="middle">Quantize · Prune</text>
-          <text class="path__sub path__stage--opt" x="770.0" y="118" text-anchor="middle">vLLM · ONNX · GGUF</text>
+          <a href="https://github.com/OriAlpha/autodistiller" target="_blank" rel="noopener noreferrer" aria-label="AutoDistiller (LLM deployment optimizer) on GitHub">
+            <rect class="path__box path__stage--opt" x="692" y="78" width="156" height="52" rx="3"/>
+            <text class="path__lbl path__stage--opt" x="770.0" y="101" text-anchor="middle">AutoDistiller</text>
+            <text class="path__sub path__stage--opt" x="770.0" y="118" text-anchor="middle">quantize · benchmark</text>
+          </a>
 
           <a href="https://github.com/OriAlpha/Local-RAG-System" target="_blank" rel="noopener noreferrer" aria-label="The Vault (Local RAG System) on GitHub">
             <rect class="path__box path__stage--rag" x="692" y="142" width="156" height="52" rx="3"/>
@@ -260,7 +262,7 @@
       <div class="stack__col">
         <h3 class="stack__name">Training &amp; inference</h3>
         <ul class="chips">
-          <li>PyTorch</li><li>DDP</li><li>FSDP</li><li>TensorFlow</li><li>Keras</li>
+          <li>PyTorch</li><li>DDP</li><li>FSDP</li><li>vLLM</li><li>llama.cpp</li><li>TensorFlow</li><li>Keras</li>
           <li>ONNX</li><li>TVM</li><li>scikit-learn</li><li>OpenCV</li>
         </ul>
       </div>
@@ -338,6 +340,6 @@
   <span>Suhas Goravale Siddaramu &middot; Reutlingen, Germany</span>
 </footer>
 
-<script src="main.js?v=14"></script>
+<script src="main.js?v=15"></script>
 </body>
 </html>
