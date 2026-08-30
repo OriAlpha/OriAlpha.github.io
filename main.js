@@ -65,9 +65,17 @@ const PROJECTS = [
     url: 'https://github.com/OriAlpha/autodistiller',
     what: 'Automatically finds the best LLM deployment config for your hardware and quality constraints. Compresses candidates (AWQ, FP8, INT8), evaluates accuracy retention, and benchmarks in real vLLM/llama.cpp servers.' },
 
-  { name: 'Autotrainer', lang: 'Python', updated: '2026-08-10', featured: true,
+  { name: 'Autotrainer', lang: 'Python', updated: '2026-08-30', featured: true,
     url: 'https://github.com/OriAlpha/Autotrainer',
     what: 'Hand it a model and data. It finds the hardware, picks the distribution strategy, and infers the loss, optimizer and schedule. PyTorch DDP and Slurm multi-node through one API.' },
+
+  { name: 'InfraSight', lang: 'JavaScript', updated: '2026-08-27', featured: true,
+    url: 'https://github.com/OriAlpha/InfraSight',
+    what: 'A transparent proxy that watches LLM, RAG and agent traffic. Request logs, PII masking, conversation replay, nested agent traces and LLM-as-a-judge scoring.' },
+
+  { name: 'SlurmGenie', lang: 'Python', updated: '2026-08-23', featured: true,
+    url: 'https://github.com/OriAlpha/SlurmGenie',
+    what: 'An offline copilot for Slurm GPU clusters. Diagnoses failed jobs, watches GPU utilization, rewrites sbatch scripts. Installs air-gapped.' },
 
   { name: 'PivotDesk', lang: 'Python', updated: '2026-08-05', featured: true,
     url: 'https://github.com/OriAlpha/PivotDesk',
@@ -77,29 +85,22 @@ const PROJECTS = [
     url: 'https://github.com/OriAlpha/Percentify',
     what: 'Minimalist percentage and proportion calculator for Android built with Kotlin and Jetpack Compose.' },
 
-  { name: 'The Vault', lang: 'Python', updated: '2026-06-19', featured: true,
-    url: 'https://github.com/OriAlpha/Local-RAG-System',
-    what: 'Local RAG that never leaves the machine. Ollama for generation, FAISS for millisecond retrieval, two models racing side by side, optional OCR for scans.' },
-
-  { name: 'SlurmGenie', lang: 'Python', updated: '2026-06-19', featured: true,
-    url: 'https://github.com/OriAlpha/SlurmGenie',
-    what: 'An offline copilot for Slurm GPU clusters. Diagnoses failed jobs, watches GPU utilization, rewrites sbatch scripts. Installs air-gapped.' },
-
-  { name: 'InfraSight', lang: 'JavaScript', updated: '2026-06-19', featured: true,
-    url: 'https://github.com/OriAlpha/InfraSight',
-    what: 'A transparent proxy that watches LLM, RAG and agent traffic. Request logs, PII masking, conversation replay, nested agent traces and LLM-as-a-judge scoring.' },
-
-  { name: 'Pokerhoster', lang: 'JavaScript', updated: '2026-06-19', featured: true,
+  { name: 'Pokerhoster', lang: 'JavaScript', updated: '2026-04-22', featured: true,
     url: 'https://github.com/OriAlpha/Pokerhoster',
     what: 'Chip and point tracking for home poker nights, with a Texas Hold’em rules reference. Vanilla JS and Vite, no framework.' },
 
-  { name: 'Llama3 Finetune', lang: 'Jupyter', updated: '2026-06-19', featured: true,
+  { name: 'The Vault', lang: 'Python', updated: '2026-02-08', featured: true,
+    url: 'https://github.com/OriAlpha/Local-RAG-System',
+    what: 'Local RAG that never leaves the machine. Ollama for generation, FAISS for millisecond retrieval, two models racing side by side, optional OCR for scans.' },
+
+  { name: 'Llama3 Finetune', lang: 'Jupyter', updated: '2025-09-03', featured: true,
     url: 'https://github.com/OriAlpha/Llama3_Finetune',
     what: 'Fine-tunes Llama 3 for topic modelling. KeyBERT pulls keywords to build an instruction dataset, then LoRA adapters train on it in 4-bit through PEFT and BitsAndBytes.' },
 
-  { name: 'House_Price_Prediction', lang: 'Jupyter', updated: '2026-06-16', url: 'https://github.com/OriAlpha/House_Price_Prediction' },
+  { name: 'House_Price_Prediction', lang: 'Jupyter', updated: '2024-07-25', url: 'https://github.com/OriAlpha/House_Price_Prediction' },
+  { name: 'BentoVLLM',              lang: 'Python',  updated: '2024-04-12', url: 'https://github.com/OriAlpha/BentoVLLM' },
   { name: 'Edge_Detection_Service', lang: 'Python',  updated: '2023-09-18', url: 'https://github.com/OriAlpha/Edge_Detection_Service' },
-  { name: 'wand-cicd',              lang: 'Python',  updated: '2023-04-07', url: 'https://github.com/OriAlpha/wand-cicd' },
+  { name: 'wand-cicd',              lang: 'Python',  updated: '2023-04-09', url: 'https://github.com/OriAlpha/wand-cicd' },
   { name: 'Video-Classification',   lang: 'Python',  updated: '2021-08-17', url: 'https://github.com/OriAlpha/Video-Classification' },
   { name: 'Adversarial_Examples',   lang: 'Python',  updated: '2020-11-04', url: 'https://github.com/OriAlpha/Adversarial_Examples' }
 ];
