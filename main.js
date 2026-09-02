@@ -20,7 +20,9 @@ const ROLES = [
       'Architected and deployed private agentic RAG and automated summarization pipelines for clinical studies.',
       'Engineered AutoTrainer to automate hardware detection and distribute training across multi-GPU setups and Slurm HPC clusters.',
       'Scaled workloads using PyTorch DDP/FSDP, mixed precision (AMP/TF32), and automated hyperparameter optimization.',
-      'Orchestrated large-scale ML workloads on Slurm HPC clusters with containerized CI/CD deployment.'
+      'Orchestrated large-scale ML workloads on Slurm HPC clusters with containerized CI/CD deployment.',
+      'Custom deep learning model training and fine-tuning using PyTorch.',
+      'GPU-accelerated model development and training for protein ML.'
     ]
   },
   {
