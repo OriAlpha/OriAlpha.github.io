@@ -267,6 +267,11 @@ a { color: inherit; text-decoration: none; }
 .path__lbl.path__stage--opt  { fill: #FF8FB8; font-variation-settings: "wdth" 95, "wght" 650; }
 .path__sub.path__stage--opt  { fill: #E88BAC; }
 
+/* emerald — independent deployed app */
+.path__box.path__stage--app  { fill: color-mix(in srgb, #10B981 14%, var(--raised)); stroke: #10B981; }
+.path__lbl.path__stage--app  { fill: #34D399; font-variation-settings: "wdth" 95, "wght" 700; }
+.path__sub.path__stage--app  { fill: #6EE7B7; }
+
 /* interactive diagram links & micro-interactions */
 .path a {
   cursor: pointer;

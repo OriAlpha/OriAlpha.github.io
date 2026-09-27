@@ -63,6 +63,10 @@ const ROLES = [
 ];
 
 const PROJECTS = [
+  { name: 'DeFuel', lang: 'TypeScript', updated: '2026-09-27', featured: true,
+    url: 'https://defuel.vercel.app/',
+    what: 'Real-time German fuel and EV charging price intelligence backed by an ML forecasting engine. Predicts intraday price curves to pinpoint optimal fill-up windows, with route planning and vehicle telemetry.' },
+
   { name: 'AutoDistiller', lang: 'Python', updated: '2026-08-30', featured: true,
     url: 'https://github.com/OriAlpha/autodistiller',
     what: 'Automatically finds the best LLM deployment config for your hardware and quality constraints. Compresses candidates (AWQ, FP8, INT8), evaluates accuracy retention, and benchmarks in real vLLM/llama.cpp servers.' },
